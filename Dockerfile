@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Update software list, install php-nginx & clear cache
 RUN apt-get update && \
     apt-get install -y --force-yes nginx \
-    php5-fpm php5-cli php5-mysql php5-mcrypt php5-pspell aspell-es php5-imagick mediainfo \
+    php5-fpm php5-cli php5-mysql php5-mcrypt php5-pspell aspell-es php5-imagick mediainfo git \
     php5-curl php5-gd php5-intl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
