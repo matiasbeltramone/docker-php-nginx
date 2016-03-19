@@ -14,7 +14,7 @@ RUN locale-gen en_US.UTF-8 && \
     add-apt-repository -y ppa:ondrej/php5-5.6 && \
     apt-get update && \
     apt-get install -y --force-yes nginx \
-    php5-fpm php5-cli php5-mysql php5-redis php5-mcrypt php5-pspell aspell-es php5-imagick mediainfo git \
+    php5-fpm php5-cli php5-mysql php5-redis php5-mcrypt php5-pspell aspell-es php5-imagick php5-xdebug mediainfo git \
     php5-curl php5-gd php5-intl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
@@ -33,6 +33,7 @@ RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php5/cli/php.ini
 RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php5/cli/php.ini
 RUN php5enmod mcrypt
+RUN php5enmod xdebug
 
 # Add nginx service
 RUN mkdir                                                               /etc/service/nginx
