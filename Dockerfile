@@ -11,13 +11,13 @@ ENV DEBIAN_FRONTEND noninteractive
 # Update software list, install php-nginx & clear cache
 RUN locale-gen en_US.UTF-8 && \
     export LANG=en_US.UTF-8 && \
-    add-apt-repository -y ppa:ondrej/php5-5.6 && \
+    add-apt-repository -y ppa:ondrej/php && \
     apt-get update && \
     apt-get install -y --force-yes nginx \
-    php5-fpm php5-cli php5-mysql php5-redis php5-mcrypt \
-    php5-pspell aspell-es php5-imagick php5-xdebug \
-    php5-sqlite phpunit mediainfo git \
-    php5-curl php5-gd php5-intl && \
+    php7.0 php-fpm php-cli php-mysql php-redis php-mcrypt \
+    php-pspell aspell-es php-imagick php-xdebug \
+    php-sqlite3 phpunit mediainfo git \
+    php-curl php-gd php-intl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
            /tmp/* \
