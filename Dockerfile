@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.16
+FROM phusion/baseimage:0.9.18
 MAINTAINER Harsh Vakharia <harshjv@gmail.com>
 MAINTAINER Leandro Banchio <lbanchio@gmail.com>
 
@@ -13,9 +13,10 @@ RUN locale-gen en_US.UTF-8 && \
     export LANG=en_US.UTF-8 && \
     add-apt-repository -y ppa:ondrej/php && \
     apt-get update && \
+    apt-get upgrade -y \
     apt-get install -y --force-yes nginx \
     php7.0 php7.0-zip php-fpm php-cli php-mysql php-redis php-mcrypt \
-    php-pspell aspell-es php-imagick php-xdebug \
+    php-pspell aspell-es php-imagick php-xdebug php7.0-xml \
     php-sqlite3 mediainfo git \
     php-curl php-gd php-intl && \
     apt-get clean && \
