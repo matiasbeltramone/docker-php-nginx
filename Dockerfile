@@ -17,7 +17,7 @@ RUN locale-gen en_US.UTF-8 && \
     apt-get install -y --force-yes nginx \
     php7.0 php7.0-zip php-fpm php-cli php-mysql php-redis php-mcrypt \
     php-pspell aspell-es php-imagick php-xdebug php-apcu php7.0-xml \
-    php-sqlite3 mediainfo git \
+    php-sqlite3 php-mbstring mediainfo git \
     php-curl php-gd php-intl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
