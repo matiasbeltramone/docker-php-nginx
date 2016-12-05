@@ -35,6 +35,7 @@ RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php
 ##For dev enviroment
 RUN sed -i 's/display_errors =.*/display_errors = On/g'                 /etc/php/7.0/fpm/php.ini
 RUN sed -i 's/display_startup_errors =.*/display_startup_errors = On/g' /etc/php/7.0/fpm/php.ini
+RUN sed -i 's/upload_max_filesize =.*/upload_max_filesize = 8M/g'      /etc/php/7.0/fpm/php.ini
 ##Updated for PHP 7.0
 RUN sed -i "s/pid =.*/pid = \/var\/run\/php-fpm.pid/"                   /etc/php/7.0/fpm/php-fpm.conf
 RUN sed -i "s/listen =.*sock/listen = \/var\/run\/php-fpm.sock/"        /etc/php/7.0/fpm/pool.d/www.conf
