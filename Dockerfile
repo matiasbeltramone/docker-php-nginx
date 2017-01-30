@@ -15,10 +15,10 @@ RUN locale-gen en_US.UTF-8 && \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --force-yes nginx \
-    php7.0 php7.0-zip php-fpm php-cli php-mysql php-redis php-mcrypt \
-    php-pspell aspell-es php-imagick php-xdebug php-apcu php7.0-xml \
-    php-sqlite3 php-mbstring mediainfo git \
-    php-curl php-gd php-intl && \
+    php7.1-zip php7.1-fpm php7.1-mysql php7.1-redis php7.1-mcrypt \
+    php7.1-imagick php7.1-xdebug php7.1-apcu php7.0-xml \
+    php7.1-sqlite3 php-mbstring git \
+    php7.1-curl php7.1-gd php7.1-intl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
            /tmp/* \
@@ -30,18 +30,18 @@ RUN sed -i "s/sendfile on/sendfile off/"                                /etc/ngi
 RUN mkdir -p                                                            /var/www
 
 # Configure PHP
-RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/7.0/fpm/php.ini
-RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php/7.0/fpm/php-fpm.conf
+RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/7.1/fpm/php.ini
+RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php/7.1/fpm/php-fpm.conf
 ##For dev enviroment
-RUN sed -i 's/display_errors =.*/display_errors = On/g'                 /etc/php/7.0/fpm/php.ini
-RUN sed -i 's/display_startup_errors =.*/display_startup_errors = On/g' /etc/php/7.0/fpm/php.ini
-RUN sed -i 's/upload_max_filesize =.*/upload_max_filesize = 8M/g'      /etc/php/7.0/fpm/php.ini
+RUN sed -i 's/display_errors =.*/display_errors = On/g'                 /etc/php/7.1/fpm/php.ini
+RUN sed -i 's/display_startup_errors =.*/display_startup_errors = On/g' /etc/php/7.1/fpm/php.ini
+RUN sed -i 's/upload_max_filesize =.*/upload_max_filesize = 64M/g'      /etc/php/7.1/fpm/php.ini
 ##Updated for PHP 7.0
-RUN sed -i "s/pid =.*/pid = \/var\/run\/php-fpm.pid/"                   /etc/php/7.0/fpm/php-fpm.conf
-RUN sed -i "s/listen =.*sock/listen = \/var\/run\/php-fpm.sock/"        /etc/php/7.0/fpm/pool.d/www.conf
+RUN sed -i "s/pid =.*/pid = \/var\/run\/php-fpm.pid/"                   /etc/php/7.1/fpm/php-fpm.conf
+RUN sed -i "s/listen =.*sock/listen = \/var\/run\/php-fpm.sock/"        /etc/php/7.1/fpm/pool.d/www.conf
 ##
-RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/7.0/cli/php.ini
-RUN sed -i "s/date.timezone =.*/date.timezone = America\/Argentina\/Cordoba/g" /etc/php/7.0/fpm/php.ini
+RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/7.1/cli/php.ini
+RUN sed -i "s/date.timezone =.*/date.timezone = America\/Argentina\/Cordoba/g" /etc/php/7.1/fpm/php.ini
 RUN phpenmod mcrypt
 RUN phpenmod xdebug
 RUN phpenmod zip
