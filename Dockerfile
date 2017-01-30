@@ -14,7 +14,7 @@ RUN locale-gen en_US.UTF-8 && \
     add-apt-repository -y ppa:ondrej/php && \
     apt-get update && \
     apt-get install -y --force-yes nginx \
-    php5.6-fpm php5.6-mysql php5.6-redis php5.6-mcrypt \
+    php5.6-fpm php5.6-zip php5.6-mysql php5.6-redis php5.6-mcrypt \
     php5.6-imagick php5.6-xml php5.6-xdebug \
     php5.6-sqlite git \
     php5.6-curl php5.6-gd php5.6-intl && \
