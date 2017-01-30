@@ -27,6 +27,7 @@ RUN locale-gen en_US.UTF-8 && \
 RUN echo "daemon off;" >>                                               /etc/nginx/nginx.conf
 RUN sed -i "s/sendfile on/sendfile off/"                                /etc/nginx/nginx.conf
 RUN mkdir -p                                                            /var/www
+RUN mkdir -p                                                            /run/php
 
 # Configure PHP
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/5.6/fpm/php.ini
