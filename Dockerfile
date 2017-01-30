@@ -14,9 +14,9 @@ RUN locale-gen en_US.UTF-8 && \
     add-apt-repository -y ppa:ondrej/php && \
     apt-get update && \
     apt-get install -y --force-yes nginx \
-    php5.6-fpm php5.6-cli php5.6-mysql php5.6-redis php5.6-mcrypt \
-    php5.6-pspell aspell-es php5.6-imagick php5.6-xdebug \
-    php5.6-sqlite phpunit git \
+    php5.6-fpm php5.6-mysql php5.6-redis php5.6-mcrypt \
+    php5.6-imagick php5.6-xdebug \
+    php5.6-sqlite git \
     php5.6-curl php5.6-gd php5.6-intl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
@@ -29,13 +29,13 @@ RUN sed -i "s/sendfile on/sendfile off/"                                /etc/ngi
 RUN mkdir -p                                                            /var/www
 
 # Configure PHP
-RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php5/fpm/php.ini
-RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php5/fpm/php.ini
-RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php5/fpm/php-fpm.conf
-RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php5/cli/php.ini
-RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php5/cli/php.ini
-RUN php5enmod mcrypt
-RUN php5enmod xdebug
+RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/5.6/fpm/php.ini
+RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/5.6/fpm/php.ini
+RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php/5.6/fpm/php-fpm.conf
+RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/5.6/cli/php.ini
+RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/5.6/cli/php.ini
+RUN phpenmod mcrypt
+RUN phpenmod xdebug
 
 # Add nginx service
 RUN mkdir                                                               /etc/service/nginx
