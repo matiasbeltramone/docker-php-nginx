@@ -31,7 +31,7 @@ RUN mkdir -p                                                            /run/php
 RUN mkdir -m 777                                                        /tmp/php
 
 # Configure PHP
-RUN sed -i "s/session.save_path =.*/session.save_path = \/tmp\/php/"    /etc/php/5.6/fpm/php.ini
+RUN sed -i "s/;session.save_path =.*/session.save_path = \/tmp\/php/"    /etc/php/5.6/fpm/php.ini
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/5.6/fpm/php.ini
 RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/5.6/fpm/php.ini
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php/5.6/fpm/php-fpm.conf
@@ -51,6 +51,7 @@ RUN mkdir                                                               /etc/ser
 ADD build/php/run.sh                                                    /etc/service/phpfpm/run
 RUN chmod +x                                                            /etc/service/phpfpm/run
 
+RUN chmod 777                                                           /var/lib/php -R
 # Add nginx
 VOLUME ["/var/www", "/etc/nginx/sites-available", "/etc/nginx/sites-enabled"]
 
