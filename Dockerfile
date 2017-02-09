@@ -35,6 +35,7 @@ RUN chown 33:33                                                         /run/php
 RUN sed -i "s/;session.save_path =.*/session.save_path = \/tmp\/php/"   /etc/php/5.6/fpm/php.ini
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/5.6/fpm/php.ini
 RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/5.6/fpm/php.ini
+RUN sed -i "s/variables_order =.*/variables_order = \"EGPCS\"/"         /etc/php/5.6/fpm/php.ini
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php/5.6/fpm/php-fpm.conf
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/5.6/cli/php.ini
 RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/5.6/cli/php.ini
