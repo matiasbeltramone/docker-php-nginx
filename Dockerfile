@@ -30,6 +30,7 @@ RUN mkdir -p                                                            /var/www
 RUN mkdir -p                                                            /run/php
 RUN mkdir -m 777                                                        /tmp/php
 RUN chown 33:33                                                         /run/php -R
+RUN chmod a+r                                                           /etc/hosts
 
 # Configure PHP
 RUN sed -i "s/;session.save_path =.*/session.save_path = \/tmp\/php/"   /etc/php/5.6/fpm/php.ini
