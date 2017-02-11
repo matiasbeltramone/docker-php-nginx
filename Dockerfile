@@ -16,7 +16,7 @@ RUN locale-gen en_US.UTF-8 && \
     apt-get upgrade -y && \
     apt-get install -y --force-yes nginx \
     php7.1-zip php7.1-fpm php7.1-mysql php7.1-redis php7.1-mcrypt \
-    php7.1-imagick php7.1-xdebug php7.1-apcu php7.0-xml \
+    php7.1-imagick php7.1-xdebug php7.1-apcu php7.1-xml \
     php7.1-sqlite3 php-mbstring git \
     php7.1-curl php7.1-gd php7.1-intl && \
     apt-get clean && \
