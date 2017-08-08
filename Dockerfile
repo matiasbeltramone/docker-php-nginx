@@ -58,7 +58,7 @@ RUN echo "xdebug.remote_enable = 1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 RUN echo "xdebug.remote_autostart = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 RUN echo "xdebug.remote_connect_back = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 RUN echo "xdebug.profiler_enable = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-RUN echo "xdebug.remote_host = 172.1.0.1 >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_host = 172.1.0.1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 
 RUN phpenmod mcrypt
 RUN phpenmod xdebug
