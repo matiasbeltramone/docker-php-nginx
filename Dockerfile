@@ -14,10 +14,10 @@ RUN locale-gen en_US.UTF-8 && \
     add-apt-repository -y ppa:ondrej/php && \
     apt-get update && \
     apt-get install -y --force-yes nginx \
-    php5.6-fpm php5.6-zip php5.6-mysql php5.6-redis php5.6-mcrypt \
-    php5.6-imagick php5.6-xml php5.6-xdebug php5.6-common \
-    php5.6-sqlite git php5.6-http \
-    php5.6-curl php5.6-gd php5.6-intl && \
+    php7.1-fpm php7.1-zip php7.1-mysql php7.1-redis php7.1-mcrypt \
+    php7.1-xml php7.1-xdebug php7.1-common \
+    php7.1-sqlite git \
+    php7.1-curl php7.1-gd php7.1-intl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
            /tmp/* \
@@ -31,12 +31,12 @@ RUN mkdir -p                                                            /run/php
 RUN mkdir -m 777                                                        /tmp/php
 
 # Configure PHP
-RUN sed -i "s/;session.save_path =.*/session.save_path = \/tmp\/php/"    /etc/php/5.6/fpm/php.ini
-RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/5.6/fpm/php.ini
-RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/5.6/fpm/php.ini
-RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php/5.6/fpm/php-fpm.conf
-RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/5.6/cli/php.ini
-RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/5.6/cli/php.ini
+RUN sed -i "s/;session.save_path =.*/session.save_path = \/tmp\/php/"    /etc/php/7.1/fpm/php.ini
+RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/7.1/fpm/php.ini
+RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/7.1/fpm/php.ini
+RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g"                 /etc/php/7.1/fpm/php-fpm.conf
+RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php/7.1/cli/php.ini
+RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/7.1/cli/php.ini
 
 RUN phpenmod mcrypt
 RUN phpenmod xdebug
