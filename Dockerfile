@@ -52,6 +52,14 @@ RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/"                  /etc/php
 RUN sed -i "s/;date.timezone =.*/date.timezone = Asia\/Kolkata/"        /etc/php/7.1/cli/php.ini
 RUN sed -i "s/;clear_env =.*/clear_env = no/"                           /etc/php/7.1/fpm/pool.d/www.conf      /etc/php/7.1/cli/php.ini
 
+RUN echo "xdebug.idekey = PHPSTORM" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.default_enable = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_enable = 1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_autostart = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_connect_back = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.profiler_enable = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_host = 172.1.0.1 >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+
 RUN phpenmod mcrypt
 RUN phpenmod xdebug
 
