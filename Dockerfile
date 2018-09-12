@@ -24,6 +24,7 @@ RUN locale-gen en_US.UTF-8 && \
     php7.1-common \
     php7.1-sqlite \
     php7.1-curl \
+    php7.1-zmq \
     php7.1-gd \
     php7.1-imagick \
     php7.1-soap \
