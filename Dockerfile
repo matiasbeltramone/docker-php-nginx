@@ -57,17 +57,14 @@ RUN sed -i "s/group = www-data/group = 1000/"                           /etc/php
 RUN sed -i "s/listener.owner = www-data/listener.owner = 1000/"                             /etc/php/7.1/fpm/pool.d/www.conf
 RUN sed -i "s/listener.group = www-data/listener.group = 1000/"                           /etc/php/7.1/fpm/pool.d/www.conf
 
-RUN echo "xdebug.idekey = PHPSTORM" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-RUN echo "xdebug.remote_enable = 1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-RUN echo "xdebug.remote_autostart = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-RUN echo "xdebug.remote_port=9000 = 1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-RUN echo "xdebug.remote_connect_back = 1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.idekey=phpstorm" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_enable=1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_port=9000" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_connect_back=1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 RUN echo "xdebug.max_nesting_level=600" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 RUN echo "xdebug.scream=0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 RUN echo "xdebug.cli_color=1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 RUN echo "xdebug.show_local_vars=1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-RUN echo "xdebug.profiler_enable = 0" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-RUN echo "xdebug.remote_host = 172.1.0.1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 
 RUN phpenmod mcrypt
 RUN phpenmod xdebug
