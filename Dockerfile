@@ -37,9 +37,17 @@ RUN locale-gen en_US.UTF-8 && \
            /tmp/* \
            /var/tmp/*
 
+# Configure users
+RUN groupadd -g 1000 user && useradd --no-log-init -u 1000 -b /var/www -M -g user user
+
 # Configure nginx
 RUN echo "daemon off;" >>                                               /etc/nginx/nginx.conf
 RUN sed -i "s/sendfile on/sendfile off/"                                /etc/nginx/nginx.conf
+RUN sed -i "s/user www-data/user user/"                                 /etc/nginx/nginx.conf
+RUN sed -i "s/user = www-data/user = user/"                             /etc/php/7.1/fpm/pool.d/www.conf
+RUN sed -i "s/group = www-data/group = user/"                           /etc/php/7.1/fpm/pool.d/www.conf
+RUN sed -i "s/listener.owner = www-data/listener.owner = user/"         /etc/php/7.1/fpm/pool.d/www.conf
+RUN sed -i "s/listener.group = www-data/listener.group = user/"         /etc/php/7.1/fpm/pool.d/www.conf
 RUN mkdir -p                                                            /var/www
 RUN mkdir -p                                                            /run/php
 RUN mkdir -m 777                                                        /tmp/php
