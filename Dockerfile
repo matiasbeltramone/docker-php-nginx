@@ -24,22 +24,31 @@ RUN locale-gen en_US.UTF-8 && \
     php7.1-common \
     php7.1-sqlite \
     php7.1-curl \
+    php7.1-zmq \
     php7.1-gd \
     php7.1-imagick \
     php7.1-soap \
     php7.1-mbstring \
     php7.1-intl \
     php7.1-bcmath \
+    php7.1-mongodb \
     git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
            /tmp/* \
            /var/tmp/*
 
+# Configure users
+RUN groupadd -g 1000 user && useradd --no-log-init -u 1000 -b /var/www -M -g user user
+
 # Configure nginx
 RUN echo "daemon off;" >>                                               /etc/nginx/nginx.conf
 RUN sed -i "s/sendfile on/sendfile off/"                                /etc/nginx/nginx.conf
-RUN sed -i "s/user www-data/user 1000/"                                /etc/nginx/nginx.conf
+RUN sed -i "s/user www-data/user user/"                                 /etc/nginx/nginx.conf
+RUN sed -i "s/user = www-data/user = user/"                             /etc/php/7.1/fpm/pool.d/www.conf
+RUN sed -i "s/group = www-data/group = user/"                           /etc/php/7.1/fpm/pool.d/www.conf
+RUN sed -i "s/listener.owner = www-data/listener.owner = user/"         /etc/php/7.1/fpm/pool.d/www.conf
+RUN sed -i "s/listener.group = www-data/listener.group = user/"         /etc/php/7.1/fpm/pool.d/www.conf
 RUN mkdir -p                                                            /var/www
 RUN mkdir -p                                                            /run/php
 RUN mkdir -m 777                                                        /tmp/php
