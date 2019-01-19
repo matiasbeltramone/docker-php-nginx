@@ -29,6 +29,7 @@ RUN locale-gen en_US.UTF-8 && \
     php7.1-soap \
     php7.1-mbstring \
     php7.1-intl \
+    php7.1-bcmath \
     git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
