@@ -16,6 +16,7 @@ RUN locale-gen en_US.UTF-8 && \
     apt-get update && \
     apt-get install -y --force-yes nginx \
     php7.4-fpm \
+    php7.4-http \
     php7.4-zip \
     php7.4-mysql \
     php7.4-redis \
