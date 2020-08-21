@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:18.04-1.0.0
 MAINTAINER Harsh Vakharia <harshjv@gmail.com>
 MAINTAINER Leandro Banchio <lbanchio@gmail.com>
 MAINTAINER Mati Beltramone <mgbeltramone@gmail.com>
