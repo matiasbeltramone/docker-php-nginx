@@ -31,7 +31,7 @@ RUN locale-gen en_US.UTF-8 && \
     php7.4-mbstring \
     php7.4-intl \
     php7.4-mongodb \
-    php7.4-bcmath \
+    php7.4-bcmath \ 
     unzip \
     git && \
     apt-get clean && \
