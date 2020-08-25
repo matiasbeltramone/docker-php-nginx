@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:18.04-1.0.0
 MAINTAINER Harsh Vakharia <harshjv@gmail.com>
 MAINTAINER Leandro Banchio <lbanchio@gmail.com>
 MAINTAINER Mati Beltramone <mgbeltramone@gmail.com>
@@ -31,6 +31,7 @@ RUN locale-gen en_US.UTF-8 && \
     php7.4-mbstring \
     php7.4-intl \
     php7.4-mongodb \
+    php7.4-bcmath \ 
     unzip \
     git && \
     apt-get clean && \
